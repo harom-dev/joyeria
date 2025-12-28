@@ -10,12 +10,11 @@ class BD{
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
                 ];
                 
+                // Usar conexión interna de Railway
                 self::$instancia = new PDO(
-                    "mysql:host=" . getenv("MYSQLHOST") .
-                    ";port=" . getenv("MYSQLPORT") .
-                    ";dbname=" . getenv("MYSQLDATABASE"),
-                    getenv("MYSQLUSER"),
-                    getenv("MYSQLPASSWORD"),
+                    "mysql:host=mysql.railway.internal;port=3306;dbname=railway",
+                    "root",
+                    "bcdzusIFRAKuoMknxcMBemJfRNRvAcyl",
                     $opcionesPDO
                 );
             } catch (PDOException $e) {
