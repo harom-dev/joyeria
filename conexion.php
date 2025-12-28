@@ -11,7 +11,7 @@ class BD{
                 ];
                 
                 self::$instancia = new PDO(
-                    "mysql:host=mysql.railway.internal;port=3306;dbname=railway",
+                    "mysql:host=crossover.proxy.rlwy.net;port=40221;dbname=railway",
                     "root",
                     "bcdzusIFRAKuoMknxcMBemJfRNRvAcyl",
                     $opcionesPDO
