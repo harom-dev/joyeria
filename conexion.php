@@ -1,15 +1,29 @@
 <?php
 class BD{
-        private static $instancia=NULL; // variable de conexion para usar en el modelo
+    private static $instancia = NULL;
+    
+    public static function crearInstancia(){
+        if(!isset(self::$instancia)){
+            try {
+                $opcionesPDO = [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                ];
 
-        public static function crearInstancia(){
-            if(!isset(self::$instancia)){ //entra si no hay conexion
-            $opcionesPDO[PDO::ATTR_ERRMODE]=PDO::ERRMODE_EXCEPTION;
+                self::$instancia = new PDO(
+                    "mysql:host=" . getenv("bcdzusIFRAKuoMknxcMBemJfRNRvAcyl") .
+                    ";port=" . getenv("3306") .
+                    ";dbname=" . getenv("railway"),
+                    getenv("root"),
+                    getenv("bcdzusIFRAKuoMknxcMBemJfRNRvAcyl"),
+                    $opcionesPDO
+                );
 
-            self::$instancia = new PDO('mysql:host=localhost;dbname=db_joyeria','root','',$opcionesPDO);
-                                        }
-        return self::$instancia;
-                                                }
+            } catch (PDOException $e) {
+                die("❌ Error de conexión BD: " . $e->getMessage());
+            }
         }
-
+        return self::$instancia;
+    }
+}
 ?>
