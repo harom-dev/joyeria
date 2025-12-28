@@ -9,16 +9,15 @@ class BD{
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
                 ];
-
+                
                 self::$instancia = new PDO(
-                    "mysql:host=" . getenv("bcdzusIFRAKuoMknxcMBemJfRNRvAcyl") .
-                    ";port=" . getenv("3306") .
-                    ";dbname=" . getenv("railway"),
-                    getenv("root"),
-                    getenv("bcdzusIFRAKuoMknxcMBemJfRNRvAcyl"),
+                    "mysql:host=" . getenv("MYSQLHOST") .
+                    ";port=" . getenv("MYSQLPORT") .
+                    ";dbname=" . getenv("MYSQLDATABASE"),
+                    getenv("MYSQLUSER"),
+                    getenv("MYSQLPASSWORD"),
                     $opcionesPDO
                 );
-
             } catch (PDOException $e) {
                 die("❌ Error de conexión BD: " . $e->getMessage());
             }
