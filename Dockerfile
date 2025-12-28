@@ -1,19 +1,11 @@
-FROM php:8.2-apache
+FROM php:8.2
 
-# Desactivar otros MPMs
-RUN a2dismod mpm_event mpm_worker || true
-RUN a2enmod mpm_prefork
-
-# Habilitar mod_rewrite
-RUN a2enmod rewrite
-
-# Instalar PDO MySQL
 RUN docker-php-ext-install pdo pdo_mysql
 
-# Copiar el proyecto
-COPY . /var/www/html/
+COPY . /app
 
-# Permisos
-RUN chown -R www-data:www-data /var/www/html
+WORKDIR /app
 
-EXPOSE 80
+EXPOSE 8080
+
+CMD ["php", "-S", "0.0.0.0:8080"]
