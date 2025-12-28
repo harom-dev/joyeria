@@ -10,20 +10,12 @@ class BD{
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
                 ];
                 
-                // URL completa que te genera Railway
-                $url = "mysql://root:bcdzusIFRAKuoMknxcMBemJfRNRvAcyl@crossover.proxy.rlwy.net:40221/railway";
-                
-                $parsed = parse_url($url);
-                
-                $host = $parsed['host'];
-                $port = $parsed['port'];
-                $user = $parsed['user'];
-                $pass = $parsed['pass'];
-                $db = ltrim($parsed['path'], '/');
-                
-                $dsn = "mysql:host=$host;port=$port;dbname=$db";
-                self::$instancia = new PDO($dsn, $user, $pass, $opcionesPDO);
-                
+                self::$instancia = new PDO(
+                    "mysql:host=crossover.proxy.rlwy.net;port=40221;dbname=railway",
+                    "root",
+                    "kXBqVdjmWadYVgUXNpcVqfaMwKfHhdoF",
+                    $opcionesPDO
+                );
             } catch (PDOException $e) {
                 die("❌ Error BD: " . $e->getMessage());
             }
