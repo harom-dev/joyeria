@@ -10,7 +10,6 @@ class BD{
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
                 ];
                 
-                // Usar conexión interna de Railway
                 self::$instancia = new PDO(
                     "mysql:host=mysql.railway.internal;port=3306;dbname=railway",
                     "root",
