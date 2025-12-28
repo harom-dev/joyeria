@@ -11,9 +11,9 @@ class BD{
                 ];
                 
                 self::$instancia = new PDO(
-                    "mysql:host=crossover.proxy.rlwy.net;port=40221;dbname=railway",
-                    "root",
-                    "kXBqVdjmWadYVgUXNpcVqfaMwKfHhdoF",
+                    "mysql:host=sql304.infinityfree.com;port=3306;dbname=if0_40780596_XXX",
+                    "if0_40780596",
+                    "H4n5lnv3nt4r10",
                     $opcionesPDO
                 );
             } catch (PDOException $e) {
